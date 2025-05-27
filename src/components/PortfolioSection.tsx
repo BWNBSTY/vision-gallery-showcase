@@ -1,6 +1,6 @@
-
 import React, { useState } from 'react';
 import { Project } from '@/types'; // Importing the Project type
+import { ChevronRight } from 'lucide-react'; // Import the icon
 
 const initialProjects: Project[] = [
   {
@@ -39,14 +39,13 @@ const PortfolioSection: React.FC = () => {
         </header>
 
         <div className="flex flex-col md:flex-row gap-8 md:gap-12">
-          {/* Left Column: Project Titles and Description */}
           <div className="md:w-2/5 space-y-8">
             <ul className="space-y-1">
               {initialProjects.map((project) => (
                 <li key={project.id}>
                   <button
                     onClick={() => handleProjectSelect(project)}
-                    className={`w-full text-left p-4 rounded-lg transition-all duration-300 ease-in-out focus:outline-none group
+                    className={`w-full text-left p-4 rounded-lg transition-all duration-300 ease-in-out focus:outline-none group flex items-center justify-between
                       ${selectedProject.id === project.id
                         ? 'bg-black text-white shadow-lg transform scale-105'
                         : 'text-gray-700 hover:bg-gray-200 hover:text-black'
@@ -56,6 +55,10 @@ const PortfolioSection: React.FC = () => {
                       ${selectedProject.id === project.id ? 'text-white' : 'text-gray-800'}`}>
                       {project.title}
                     </h3>
+                    <ChevronRight 
+                      className={`h-6 w-6 transition-transform duration-300 ease-in-out 
+                        ${selectedProject.id === project.id ? 'text-white' : 'text-gray-400 group-hover:text-black'}`} 
+                    />
                   </button>
                 </li>
               ))}
@@ -68,7 +71,6 @@ const PortfolioSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Project Image */}
           <div className="md:w-3/5">
             <div className="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg shadow-xl overflow-hidden">
               {selectedProject.imageUrl && (
