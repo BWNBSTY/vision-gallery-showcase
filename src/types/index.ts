@@ -3,5 +3,5 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  imageUrl: string;
+  imageUrls: string[]; // Changed from imageUrl to imageUrls array
 }
